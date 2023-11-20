@@ -6,6 +6,12 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+# Generar Tet en pydantic
+
+
+class Text(BaseModel):
+    text: str
+
 
 current_dir = dirname(abspath(__file__))
 static_path = join(current_dir, "static")
@@ -27,7 +33,8 @@ def root():
 @app.post('/generate')
 def generate(body: Body):
     """
-    Generate a pseudo-random token ID of twenty characters by default. Example POST request body:
+    Generate a pseudo-random token ID of twenty characters by default.
+    Example POST request body:
 
     {
         "length": 20
